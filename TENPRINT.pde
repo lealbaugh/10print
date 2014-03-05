@@ -1,10 +1,10 @@
-int slashsize = 40;
+import processing.pdf.*
+
+int slashsize = 20;
 PShape slash;
 PShape backslash;
 
-//color[] colors = {color(90,65,128), color(98,100,153), color(128,161,179), color(157,204,190), color(195, 230,174)};
-//palette from http://www.colourlovers.com/palette/91700/self_soothing
-color[] colors = { color(157,204,190), color(128,161,179)};
+color[] colors = {color(0,136,204), color(204,236,251)};
 
 void setup() {
   size(800, 800);
@@ -14,14 +14,15 @@ void setup() {
 } 
 
 void draw() {
-  background(195, 230,174);
+//  background(195, 230,174);
+  background(colors[0]);
   slash.disableStyle();
   backslash.disableStyle();
   fill(255);
   noStroke();
   
-  for (int j=0; j*slashsize<screen.height; j++) {
-    for (int i=0; i*slashsize<screen.width; i++) {
+  for (int j=0; j*slashsize<displayHeight; j++) {
+    for (int i=0; i*slashsize<displayWidth; i++) {
       PShape thisshape;
       if(random(0,1)<0.5) {
         thisshape = slash;
@@ -29,7 +30,10 @@ void draw() {
       else {
         thisshape = backslash;
       }
-      fill(colors[int(random(0, colors.length))]);
+      if (colors.length>2) {
+        fill(colors[int(random(1, colors.length))]);
+      }
+      else  fill(colors[1]);
       shape(thisshape, i*slashsize, j*slashsize, slashsize, slashsize+1);
     }
   }
