@@ -1,24 +1,29 @@
-import processing.pdf.*
+import processing.pdf.*;
+// http://processing.org/reference/libraries/pdf/
 
+int canvasWidth = 800;
+int canvasHeight = 800;
 int slashsize = 20;
+// Sizes in pixels
+
+color[] colors = {color(0,136,204), color(204,236,251)};
+// First color is the background, later colors are selected randomly for the foreground
+
 PShape slash;
 PShape backslash;
 
-color[] colors = {color(0,136,204), color(204,236,251)};
-
 void setup() {
-  size(800, 800);
+  size(800,800, PDF, "10PRINT.pdf");
   slash = loadShape("slash.svg");
   backslash = loadShape("backslash.svg");
   noLoop();
 } 
 
 void draw() {
-//  background(195, 230,174);
   background(colors[0]);
   slash.disableStyle();
   backslash.disableStyle();
-  fill(255);
+  // disableStyle allows us to pick our own line/fill styling for an svg
   noStroke();
   
   for (int j=0; j*slashsize<displayHeight; j++) {
@@ -34,7 +39,8 @@ void draw() {
         fill(colors[int(random(1, colors.length))]);
       }
       else  fill(colors[1]);
-      shape(thisshape, i*slashsize, j*slashsize, slashsize, slashsize+1);
+      shape(thisshape, i*slashsize, j*slashsize, slashsize, slashsize);
     }
   }
+  exit();
 }
