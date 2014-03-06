@@ -6,16 +6,25 @@ int canvasHeight = 800;
 int slashsize = 20;
 // Sizes in pixels
 
-color[] colors = {color(0,136,204), color(204,236,251)};
+Boolean pixelated = false;
+
+//color[] colors = {color(0,136,204), color(204,236,251)};
+color[] colors = {color(102,152,253), color(204,219,251)}; //C64-appropriate
 // First color is the background, later colors are selected randomly for the foreground
 
 PShape slash;
 PShape backslash;
 
 void setup() {
-  size(800,800, PDF, "10PRINT.pdf");
-  slash = loadShape("slash.svg");
-  backslash = loadShape("backslash.svg");
+  size(800,800, PDF, "Random-variations.pdf");
+  if (pixelated) {
+    slash = loadShape("slash-pixelated.svg");
+    backslash = loadShape("backslash-pixelated.svg");
+  }
+  else {
+    slash = loadShape("slash.svg");
+    backslash = loadShape("backslash.svg");
+  }
   noLoop();
 } 
 
