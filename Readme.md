@@ -1,1 +1,1 @@
-Making a vectory version of 10PRINT for printing on fabrics.
+Making a vectory version of 10PRINT for printing on fabrics.  See [instamatique.com/blog/10-printing-some-fabric/](http://instamatique.com/blog/10-printing-some-fabric/) for background and output.
